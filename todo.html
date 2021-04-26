@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo App</title>
+</head>
+<body>
+
+<h1>To Do List</h1>
+
+<table width="600px" border="1">
+    <tr>
+        <td width="200px"><b>Task</b></td>
+        <td width="200px"><b>Email</b></td>
+        <td width="200px"><b>Priority</b></td>
+    </tr>
+
+    {% for task in todo_list: %}
+
+    <tr>
+        <td width="200px">{{ task[0] }}</td>
+        <td width="200px">{{ task[1] }}</td>
+        <td width="200px">{{ task[2] }}</td>
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+<br>
+<br>
+
+<form action="/submit" width="400" method="post">
+    <table>
+        <tr>
+            <td width="100">Task:</td>
+            <td width="300"><input type="text" name="task"></td>
+        </tr>
+        <tr>
+            <td width="100">Email:</td>
+            <td width="300"><input type="text" name="email"></td>
+        </tr>
+        <tr>
+            <td width="100">Priority:</td>
+            <td width="300">
+                <select name="priority">
+                    <option value="High" selected>High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="2"><input type="submit" value="Submit"></td>
+        </tr>
+    </table>
+</form>
+
+<br>
+
+<form method="get" action="/clear">
+    <td rowspan="2"><input type="submit" value="Clear"></td>
+</form>
+
+<br>
+
+<form method="get" action="/save">
+    <td rowspan="2"><input type="submit" value="Save"></td>
+</form>
+
+<br>
+
+<form action="/delete" method="post">
+
+    <tr>
+            <td rowspan="2"><input type="submit" value="Delete index"></td>
+            <td width="20"><input type="text" name="delete"></td>
+        </tr>
+
+</form>
+
+</body>
+</html>
